@@ -1,4 +1,4 @@
-cd "../marvin-php" 
+cd "../marvin" 
 
 if [ ! -f algo.php ]; then
     echo "❌ algo.php manquant dans le repo"
