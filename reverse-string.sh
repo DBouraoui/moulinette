@@ -8,8 +8,6 @@ echo ""
 # Liste de mots à tester (strings normaux)
 WORDS=("train" "cacochyme" "bonjour" "algorithmique" "shell")
 
-# Valeurs numériques pour tester sensibilité au type
-NUMBERS=(42 2025 1001)
 
 declare -i total_students=0
 declare -i total_success=0
@@ -64,25 +62,14 @@ for student in */ ; do
             echo "  ✖ Certains tests WORDS échouent → +0 pts"
         fi
 
-        # 🔹 Tests sensibilité au type (DOIT renvoyer un message d'erreur attendu)
-        numeric_ok=true
+        # Test : aucun argument
+        output=$(php "$FILE" 2>/dev/null)
 
-        for num in "${NUMBERS[@]}"; do
-            output=$(php "$FILE" "$num" 2>/dev/null)
-
-            if [[ "$output" == *"Le type attendu est incorrect"* ]]; then
-                echo "    🟢 Numérique $num rejeté correctement"
-            else
-                echo "    🔴 Numérique $num : Mauvaise gestion du type → '$output'"
-                numeric_ok=false
-            fi
-        done
-
-        if $numeric_ok; then
-            echo "  ✔ Tests numériques respectés → +5 pts"
+        if [[ "$output" == *"Aucun argument fourni."* ]]; then
+            echo "    🟢 Test sans argument : erreur correctement renvoyée -> +5 pts"
             POINTS=$(($POINTS + 5))
         else
-            echo "  ✖ Erreur dans la gestion des nombres → +0 pts"
+            echo "    🔴 Test sans argument : message attendu non trouvé → '$output'"
         fi
 
         echo "🏅 Score final pour l'élève : $POINTS / 20"
