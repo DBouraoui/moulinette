@@ -30,7 +30,7 @@ for student in */ ; do
         fi
 
         echo "  📄 reverse-string.php trouvé → +5 pts"
-        POINTS+=5
+        POINTS=$($POINTS + 5)
         
         all_correct_words=true
         
@@ -49,7 +49,7 @@ for student in */ ; do
 
         if $all_correct_words; then
             echo "  ✔ Tous les tests WORDS OK → +10 pts"
-            POINTS+=10
+            POINTS=$($POINTS + 10)
         else
             echo "  ✖ Certains tests WORDS échouent → +0 pts"
         fi
@@ -70,7 +70,7 @@ for student in */ ; do
 
         if $numeric_ok; then
             echo "  ✔ Tests numériques respectés → +5 pts"
-            POINTS+=5
+            POINTS=$($POINTS + 5)
         else
             echo "  ✖ Erreur dans la gestion des nombres → +0 pts"
         fi
