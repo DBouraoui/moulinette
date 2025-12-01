@@ -25,6 +25,7 @@ for student in */ ; do
         # 🔹 Vérification du fichier
         if [ ! -f "$FILE" ]; then
             echo "  ❌ reverse-string.php manquant → +0 pts"
+            echo "🏅 Score final pour l'élève : $POINTS / 20"
             echo ""
             continue
         fi
