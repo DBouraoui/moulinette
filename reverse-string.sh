@@ -30,6 +30,15 @@ for student in */ ; do
             continue
         fi
 
+       strrev=$(grep -i "strrev" "$FILE")
+
+        if [ -n "$strrev" ]; then
+            echo "❌ Fonction native 'strrev' trouvée → note finale 0/20"
+            echo ""
+            continue
+        fi
+
+
         echo "  📄 reverse-string.php trouvé → +5 pts"
         POINTS=$(($POINTS + 5))
         
